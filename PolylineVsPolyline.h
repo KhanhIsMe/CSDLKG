@@ -123,8 +123,10 @@ void TimTrung(polyline d[], int i , int j , giaodiem GD[] , int dem){
 
 
 int KiemTraThuoc(polyline d[] , int i , int j , point GD){
-    if (GD.x >= d[i].xMin && GD.x <= d[i].xMax && d[j].yMin <= GD.y  && d[j].yMax >= GD.y)
-        return 1;
+    if (d[i].xMin <= GD.x && GD.x <= d[i].xMax && d[i].yMin <= GD.y && GD.y <= d[i].yMax) {
+        if (d[j].xMin <= GD.x && GD.x <= d[j].xMax && d[j].yMin <= GD.y && GD.y <= d[j].yMax)
+            return 1;
+    }
     return 0;
 };
 
