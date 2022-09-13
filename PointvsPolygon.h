@@ -94,13 +94,21 @@ int KiemTraGiao(ToaDo m[], Duong d[], int n, ToaDo a){
     for (int i = 0 ; i < n - 1 ; i++ ){
         GD.y = a.y;
         GD.x = (a.y-d[i].b)/d[i].a;
-        if (d[i].a != 0 && ThuocGioiHan(d,GD,i) && KiemTraDinhDuoi(m,i,i+1,GD) != 1 && GD.x >= a.x ) dem++;
+        if (d[i].a != 0 && ThuocGioiHan(d,GD,i) == 1  && KiemTraDinhDuoi(m,i,i+1,GD) != 1 && GD.x >= a.x ) dem++;
     };
     GD.y = a.y;
     GD.x = (a.y-d[n-1].b)/d[n-1].a;
-    if (d[n-1].a != 0 && ThuocGioiHan(d,GD,n-1) && KiemTraDinhDuoi(m,n-1,0,GD) != 1 && GD.x >= a.x ) dem++;
+    if (d[n-1].a != 0 && ThuocGioiHan(d,GD,n-1) == 1 && KiemTraDinhDuoi(m,n-1,0,GD) != 1 && GD.x >= a.x ) dem++;
     return dem;
 }
 
-
+int KiemTraDiem(ToaDo m[], Duong d[], int n, ToaDo a){
+    if (DiemThuocDuong(d, a, n) == 1)
+        return -1;
+    else
+        if (KiemTraGiao(m, d, n, a) % 2 == 1)
+            return 1;
+        else
+            return 0;
+}
 

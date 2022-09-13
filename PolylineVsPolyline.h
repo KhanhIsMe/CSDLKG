@@ -16,9 +16,8 @@ class giaodiem{
 
 class polyline
 {
-private:
-    float x1,y1,x2,y2,a,b,xMax,xMin,yMax,yMin;
 public:
+    float x1,y1,x2,y2,a,b,xMax,xMin,yMax,yMin;
     polyline();
     ~polyline();
     void Nhap();
