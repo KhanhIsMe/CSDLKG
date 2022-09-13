@@ -153,10 +153,6 @@ int KiemTraGiao(polyline d[],int i , int j , giaodiem a[] , int &dem){
     }
 };
 
-// void TimTrung(polyline d[], int i , int j , giaodiem GD[] , int dem){
-//     if d
-// }
-
 int Xuli(polyline d[] , int n){
     int dem = 0;
     giaodiem GD[1000];
