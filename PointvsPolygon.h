@@ -15,7 +15,7 @@ struct Duong
     float a, b, GHx1, GHx2, GHy1, GHy2;
 };
 
-
+// Tạo ra mảng đường từ các tọa độ của polygon
 void LapDuong(ToaDo m[], Duong d[], int n) {
     int dem = 0, i;
     float  a, b;
@@ -66,11 +66,12 @@ void LapDuong(ToaDo m[], Duong d[], int n) {
     }
 };
 
+// kiểm tra điểm có thuocj đoạn thảng hay không
 int ThuocGioiHan(Duong d[], ToaDo a, int i){
     if ((d[i].GHx2 <= a.x && a.x <= d[i].GHx1) && (d[i].GHy2 <= a.y && a.y <= d[i].GHy1)) return 1;
     return 0;
 }
-
+ // Kiểm tra có phải là đỉnh dưới của đường thẳng hay không
 int KiemTraDinhDuoi(ToaDo m[], int i, int j, ToaDo GD){
     if ((GD.x == m[i].x && GD.y == m[i].y) || (GD.x == m[j].x && GD.y == m[j].y)){
         if (GD.y < m[i].y || GD.y < m[j].y) return 1;
@@ -78,8 +79,8 @@ int KiemTraDinhDuoi(ToaDo m[], int i, int j, ToaDo GD){
     return 0;
 };
 
+//Kiểm tra một điểm có thuộc đường hay không
 int DiemThuocDuong(Duong d[], ToaDo a, int n) {
-    
     for (int i = 0; i < n; i++) {
         if (ThuocGioiHan(d,a,i) == 1) {
             if ((d[i].a * a.x - a.y + d[i].b) == 0) return 1;
@@ -88,6 +89,7 @@ int DiemThuocDuong(Duong d[], ToaDo a, int n) {
     return 0;
 }
 
+//Tìm tất cả những điểm giao
 int KiemTraGiao(ToaDo m[], Duong d[], int n, ToaDo a){
     ToaDo GD;
     int dem = 0;
@@ -102,11 +104,12 @@ int KiemTraGiao(ToaDo m[], Duong d[], int n, ToaDo a){
     return dem;
 }
 
+//Kiểm tra xem điểm có nằm trong vùng hay không
 int KiemTraDiem(ToaDo m[], Duong d[], int n, ToaDo a){
-    if (DiemThuocDuong(d, a, n) == 1)
+    if (DiemThuocDuong(d, a, n) == 1) // kiểm tra điểm có nằm trên polygon hay không
         return -1;
     else
-        if (KiemTraGiao(m, d, n, a) % 2 == 1)
+        if (KiemTraGiao(m, d, n, a) % 2 == 1) // nếu số điểm giao là lẻ thì điểm nằm trong vùng
             return 1;
         else
             return 0;

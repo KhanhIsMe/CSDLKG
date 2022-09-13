@@ -6,7 +6,7 @@ struct GiaoDiem
 {
     float x,y;
 };
-
+//kiểm tra hai polygon có cắt nhau không
 int TimCat(Duong d1[],Duong d2[] , int i, int j){
     ToaDo GD;
     GD.x = (d2[j].b - d1[i].b) / (d1[i].a - d2[j].a);
