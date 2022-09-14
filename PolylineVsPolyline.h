@@ -20,7 +20,7 @@ public:
     float x1,y1,x2,y2,a,b,xMax,xMin,yMax,yMin;
     polyline();
     ~polyline();
-    void Nhap();
+    void Nhap(float a,float b,float c,float d);
     void Taopolyline();
     friend int KiemTraGiao(polyline d[],int i , int j , giaodiem a[] , int &dem);
     friend point;
@@ -37,8 +37,11 @@ polyline::~polyline()
 {
 }
 
-void polyline::Nhap(){
-    cin >> x1 >> y1 >> x2 >> y2;
+void polyline::Nhap(float a,float b,float c,float e){
+    x1 = a;
+    y1 = b;
+    x2 = c;
+    y2 = e;
 };
 
 // Tạo lớp Polylien 
@@ -163,12 +166,15 @@ int Xuli(polyline d[] , int n){
            KiemTraGiao(d,i,j,GD,dem);
         }
     }
-    for (int i = 1 ; i <= dem ; i++){
-        if (GD[i].trung == 0){
-            cout << "Hai duong thang " << GD[i].a << " va " << GD[i].b << " cat nhau tai (" <<  GD[i].xg << "," << GD[i].yg << ")" << endl;
-        } 
-        else {
-            cout << "Hai duong thang " << GD[i].a << " va " << GD[i].b << " trung nhau tu (" <<  GD[i].x1 << "," << GD[i].y1 << ") " << "den (" <<  GD[i].x2 << "," << GD[i].y2 << ")" << endl;
+    if (dem == 0) 
+        cout << "Khong co duong nao cat nhau";
+    else
+        for (int i = 1 ; i <= dem ; i++){
+            if (GD[i].trung == 0){
+                cout << "Hai duong thang " << GD[i].a << " va " << GD[i].b << " cat nhau tai (" <<  GD[i].xg << "," << GD[i].yg << ")" << endl;
+            } 
+            else {
+                cout << "Hai duong thang " << GD[i].a << " va " << GD[i].b << " trung nhau tu (" <<  GD[i].x1 << "," << GD[i].y1 << ") " << "den (" <<  GD[i].x2 << "," << GD[i].y2 << ")" << endl;
+            }
         }
-    }
 }
